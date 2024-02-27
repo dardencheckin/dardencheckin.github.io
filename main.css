@@ -1,0 +1,173 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #343a40;
+    color: #E57200;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+.login-link {
+    color: #F9DCBF;
+    text-decoration: none;
+    border-bottom: 2px solid #F9DCBF;
+    padding: 0 0px;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0;
+}
+
+.option-box {
+    cursor: pointer;
+    width: 30%;
+    background-color: #232D4B;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.option-box:hover {
+    background-color: #0056b3;
+}
+
+.secondary-title {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 2em;
+    color: #343a40;
+}
+
+.event-creation-fields {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.event-creation-fields label {
+    display: block;
+    margin-bottom: 8px;
+    color: #343a40;
+}
+
+.event-creation-fields input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.event-creation-fields input[type="date"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Set font for date field */
+}
+
+.back-link {
+    color: #ffc107;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Event List Container */
+#eventListContainer {
+    margin-top: 20px;
+}
+
+/* Events Table */
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.event-table th, .event-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.event-table th {
+    background-color: #f2f2f2;
+}
+
+/* Alternate Row Colors */
+.event-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.event-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.event-item span {
+    font-weight: bold;
+    display: block;
+}
+
+.links {
+    margin-top: 10px;
+}
+
+.links a {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+
+.attendee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.attendee-table th, .attendee-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.attendee-table th {
+    background-color: #f2f2f2;
+}
+
+.scrollable {
+    max-height: 200px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+}

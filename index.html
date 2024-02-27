@@ -1,7 +1,88 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJ8wFiLBbbc96-FC1RXP5RNW5qGUA7OEQ",
+    authDomain: "darden-check-in-1.firebaseapp.com",
+    projectId: "darden-check-in-1",
+    storageBucket: "darden-check-in-1.appspot.com",
+    messagingSenderId: "650778621909",
+    appId: "1:650778621909:web:a1e42a2843c97ce5adaf5c",
+    measurementId: "G-65L4HNVHYR"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darden Check-In</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Darden Check-In</h1>
+      <a href="registration.html" class="login-link">Register/Sign In</a>
+    </header>
+
+    <div class="options-container">
+      <div class="option-box" onclick="displaySecondaryTitle('Current Events')">
+        <p>Register for an Event</p>
+      </div>
+      <div class="option-box" onclick="displaySecondaryTitle('Event Creation')">
+        <p>Create an Event</p>
+      </div>
+      <div class="option-box" onclick="displaySecondaryTitle('Events for Review')">
+        <p>Review an Event</p>
+      </div>
+    </div>
+
+    <div id="secondaryTitle" class="secondary-title"></div>
+
+    <div id="eventCreationFields" class="event-creation-fields">
+      <form id="eventCreationForm">
+        <label for="organizerContact">Organizer Contact:</label>
+        <input type="text" id="organizerContact" name="organizerContact" placeholder="Enter organizer's contact">
+
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" placeholder="Enter event name" required>
+
+        <label for="clubOrganization">Club/Organization:</label>
+        <input type="text" id="clubOrganization" name="clubOrganization" placeholder="Enter club/organization">
+
+
+        <label for="eventLocation">Event Location:</label>
+        <input type="text" id="eventLocation" name="eventLocation" placeholder="Enter event location" required>
+
+        <label for="eventDate">Event Date and Time:</label>
+        <input type="datetime-local" id="eventDate" name="eventDate" placeholder="Select event date and time" required>
+
+        <button type="submit">Create Event</button>
+      </form>
+    </div>
+
+    <div id="eventListContainer" class="event-list-container"> </div>
+
+    <canvas id="attendanceChart" width="400" height="200"></canvas>
+
+    <script src="script.js"></script>
+
+  </body>
+
 </html>

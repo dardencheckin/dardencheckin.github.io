@@ -12,6 +12,20 @@ header {
     padding: 20px 0;
 }
 
+#uploadCompleteMessage {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
 header h1 {
     margin: 0;
     font-size: 3em;
@@ -44,6 +58,10 @@ header h1 {
 
 .option-box:hover {
     background-color: #0056b3;
+}
+
+.selected-title {
+    color: #007bff; /* Lighter shade of blue */
 }
 
 .secondary-title {

@@ -1,5 +1,17 @@
 function displaySecondaryTitle(title) {
 
+  // Remove 'selected-title' class from all secondary titles
+  const secondaryTitles = document.querySelectorAll('.option-box p');
+  secondaryTitles.forEach(titleElement => {
+    titleElement.classList.remove('selected-title');
+  });
+
+  // Add 'selected-title' class to the selected secondary title
+  const selectedTitleElement = Array.from(secondaryTitles).find(titleElement => titleElement.textContent.trim() === title);
+  if (selectedTitleElement) {
+    selectedTitleElement.classList.add('selected-title');
+  }
+
   document.getElementById('attendanceChart').style.display = 'none';
 
   document.getElementById('secondaryTitle').innerText = title;
@@ -387,49 +399,6 @@ function displaySecondaryTitle(title) {
         if (doc.exists) {
           console.log('Event found in Firestore:', doc.data());
           // Now proceed with adding attendees
-          // Iterate through rows and add attendee information to Firestore
-        } else {
-          console.log(`Event "${eventName}" not found in Firestore.`);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching event from Firestore:', error);
-        // Handle error appropriately
-      });
-  }
-
-  function processExcelData(data) {
-    const workbook = XLSX.read(data, {
-      type: 'binary'
-    });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    const jsonData = XLSX.utils.sheet_to_json(sheet, {
-      header: 1
-    });
-
-    // Log the entire JSON data for debugging
-    console.log('Excel JSON Data:', jsonData);
-
-    // Determine the event name from cell B2
-    const eventName = jsonData[1][1]; // Assuming B2 corresponds to row 2 and column B
-    console.log('Event Name from File:', eventName);
-
-    // Check if the event name is defined
-    if (!eventName) {
-      console.log('Event name is not defined in the file.');
-      return;
-    }
-
-    // Get a reference to the event document in Firestore
-    const eventRef = firebase.firestore().collection('Events').doc(eventName);
-
-    // Check if the event document exists in Firestore
-    eventRef.get()
-      .then(doc => {
-        if (doc.exists) {
-          console.log('Event found in Firestore:', doc.data());
-          // Now proceed with adding attendees
           addAttendeesToEvent(jsonData, eventName, eventRef);
         } else {
           console.log(`Event "${eventName}" not found in Firestore.`);
@@ -478,8 +447,7 @@ function displaySecondaryTitle(title) {
           // Check if this is the last attendee to be uploaded
           if (i === jsonData.length - 1) {
             uploadComplete = true;
-            // Show upload complete message on screen
-            showUploadCompleteMessage();
+            showUploadCompleteMessage(); // Ensure this function is being called
           }
         })
         .catch(error => {
@@ -489,12 +457,15 @@ function displaySecondaryTitle(title) {
   }
 
   function showUploadCompleteMessage() {
-    // Assuming there's a div with the id "uploadCompleteMessage" to display the message
+    console.log('Upload complete message displayed');
     const uploadCompleteMessageDiv = document.getElementById('uploadCompleteMessage');
     if (uploadCompleteMessageDiv) {
-      uploadCompleteMessageDiv.innerText = 'Attendee information upload complete!';
+      uploadCompleteMessageDiv.innerText = 'All attendees uploaded successfully';
       uploadCompleteMessageDiv.style.display = 'block';
+      // Set a timeout to hide the message after 3 seconds
+      setTimeout(() => {
+        uploadCompleteMessageDiv.style.display = 'none';
+      }, 3000);
     }
   }
-
 }

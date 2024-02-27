@@ -15,15 +15,21 @@ header {
 #uploadCompleteMessage {
     display: none;
     position: fixed;
-    top: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background-color: #4CAF50;
     color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 9999;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Horizontally center align text */
 }
 
 header h1 {

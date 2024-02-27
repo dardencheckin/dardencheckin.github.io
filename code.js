@@ -452,7 +452,7 @@ function displaySecondaryTitle(title) {
         })
         .catch(error => {
           console.error('Error adding attendee:', error);
-        });
+       });
     }
   }
 
@@ -460,7 +460,7 @@ function displaySecondaryTitle(title) {
     console.log('Upload complete message displayed');
     const uploadCompleteMessageDiv = document.getElementById('uploadCompleteMessage');
     if (uploadCompleteMessageDiv) {
-      uploadCompleteMessageDiv.innerText = 'All attendees uploaded successfully';
+      uploadCompleteMessageDiv.innerText = 'Attendees have been uploaded successfully!';
       uploadCompleteMessageDiv.style.display = 'block';
       // Set a timeout to hide the message after 3 seconds
       setTimeout(() => {

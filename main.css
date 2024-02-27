@@ -200,3 +200,17 @@ header h1 {
     max-height: 200px; /* Adjust the maximum height as needed */
     overflow-y: auto;
 }
+
+#uploadAttendeeInfoContainer {
+  margin-left: 20px; /* Add left margin for left bumper */
+}
+
+.attendee-info-message {
+  margin-bottom: 10px; /* Add space between lines */
+  background-color: transparent; /* Remove background color */
+  display: inline-block; /* Ensure proper alignment */
+}
+
+.upload-link-container {
+  margin-bottom: 20px; /* Add space between lines */
+}

@@ -163,14 +163,12 @@ function displaySecondaryTitle(title) {
           const noAttendeeMessage = document.createElement('div');
           noAttendeeMessage.textContent = 'No current attendee information for this event';
 
+          // Create link to upload attendee information
           const uploadLink = document.createElement('a');
           uploadLink.href = '#';
           uploadLink.textContent = 'Upload Attendee Information';
           // Add functionality to upload attendee information
-          uploadLink.addEventListener('click', () => {
-            // Implement functionality to upload attendee information here
-            alert('Upload attendee information for ' + eventName);
-          });
+          uploadLink.addEventListener('click', handleUploadAttendeeInformation);
 
           noAttendeeMessage.appendChild(document.createElement('br'));
           noAttendeeMessage.appendChild(uploadLink);
@@ -275,7 +273,7 @@ function displaySecondaryTitle(title) {
         data: {
           labels: labels,
           datasets: [{
-            label: '', // Set label to an empty string
+            label: 'Number of Attendees', // Add label to the dataset
             data: data,
             backgroundColor: labels.map(section => colors[section] || 'grey'), // Use color from 'colors' object, or grey if not found
             borderColor: '#808080', // Border color for all bars
@@ -292,7 +290,10 @@ function displaySecondaryTitle(title) {
             }
           },
           legend: {
-            display: false // Hide the legend
+            display: true, // Show the legend
+            labels: {
+              fontColor: 'black' // Set legend label color
+            }
           }
         }
       });
@@ -305,7 +306,6 @@ function displaySecondaryTitle(title) {
       ctx.canvas.style.display = 'block';
     }
   }
-
 
 
   function createEvent() {
@@ -452,7 +452,7 @@ function displaySecondaryTitle(title) {
         })
         .catch(error => {
           console.error('Error adding attendee:', error);
-       });
+        });
     }
   }
 
@@ -465,7 +465,17 @@ function displaySecondaryTitle(title) {
       // Set a timeout to hide the message after 3 seconds
       setTimeout(() => {
         uploadCompleteMessageDiv.style.display = 'none';
-      }, 3000);
+      }, 3000)
     }
   }
+
+  function handleUploadAttendeeInformation() {
+    // Prompt user to upload an Excel file
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.xlsx'; // Specify accepted file types (Excel files)
+    fileInput.addEventListener('change', handleFileUpload);
+    fileInput.click(); // Simulate click event to trigger file input
+  }
+
 }
